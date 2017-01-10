@@ -12,6 +12,7 @@
 
 var fs = require('fs');
 var path = require('canonical-path');
+var bootstrap = require('bootstrap');
 var _ = require('lodash');
 
 
