@@ -21,11 +21,6 @@ export class HomePageHeader  {
     }
   };
   logout(){
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }, function(error) {
-      alert("Error logging out: " + error.message);
-    });
     this.router.navigate(['login']);
   };
   // search(){
