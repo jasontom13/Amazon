@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { JsonpModule, HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { HomePageCarousel} from './HomePage/HomePageCarousel/home-page-carousel.component';
@@ -11,6 +12,9 @@ import { RelatedItems } from './HomePage/RelatedItems/related-items.component';
 import { LoginPage } from './LoginPage/login.component';
 import { HomePage } from './HomePage/home-page.component';
 import { RouterModule }   from '@angular/router';
+import { WalmartService } from './services/walmart.service'
+import { SearchService } from './services/search.service';
+
 
 
 
@@ -19,6 +23,8 @@ import { RouterModule }   from '@angular/router';
   imports:      [
     BrowserModule,
     FormsModule,
+    JsonpModule,
+    HttpModule,
     RouterModule.forRoot([
       {
           path: '',
@@ -33,9 +39,10 @@ import { RouterModule }   from '@angular/router';
           path: 'home',
           component: HomePage
       }
-    ])
+    ]),
    ],
-  declarations: [ AppComponent, HomePage, LoginPage, HomePageHeader, RelatedItems, HomePageCarousel, HomePageMain, HomePageRecommendations],
-  bootstrap:    [ AppComponent ]
+   providers: [WalmartService, SearchService],
+   declarations: [ AppComponent, HomePage, LoginPage, HomePageHeader, RelatedItems, HomePageCarousel, HomePageMain, HomePageRecommendations],
+   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

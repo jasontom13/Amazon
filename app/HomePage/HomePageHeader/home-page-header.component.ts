@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'home-page-header',
@@ -7,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomePageHeader  {
   constructor(
-    private router : Router
+    private router : Router,
+    private searchService : SearchService
   ){};
   items = ["--","Auto", "Home", "Beauty"];
   selectedSearchField : string = "Select";
@@ -23,9 +25,9 @@ export class HomePageHeader  {
   logout(){
     this.router.navigate(['login']);
   };
-  // search(){
-  //   firebase.database().ref('users/' + "test").set({
-  //   searchString: this.searchString
-  // });
-  // };
+  search(){
+    this.searchService.setQuery(this.searchString);
+  };
+
+
 }
